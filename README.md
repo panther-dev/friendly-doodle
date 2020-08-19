@@ -14,4 +14,13 @@ Enter file name (Script will open it with mkvinfo, find the track to extract i.e
 Enter track number
 Done 
 
+What it does
+
+You| Run the script.
+You| Enter track number
+Script| Extracts the ass subtitles
+Script| Coverts ass subs into srt
+Script| Merges srt with the orignal files and removes the ass subs and extra elements
+Script| Swap the orignal file with New File and renames original file with .bak extension
+
 You can modify however it fits you.
