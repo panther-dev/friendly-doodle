@@ -1,13 +1,13 @@
 #!/bin/bash
-echo "Enter file name:"
-read ifile
-mkvinfo "$ifile"
-echo "Extension:"
-read ext
-echo "Track no:"
+echo "This will Ex ASS con to SRT inject back into mkv rm extra "
+echo "Enter Mkv extract Track no for subtitles:"
 read track
-for i in *.mkv ; do 
-echo "${i%.*}";
-mkvextract "$i" tracks "$track":"${i%.*}"."$ext"
-ffmpeg -i "${i%.*}".ass -codec:s text "${i%.*}".srt
+for file in *.mkv ; do 
+# every file 
+echo "${file%.*}";
+mkvextract "$file" tracks "$track":"${file%.*}".ass
+ffmpeg -i "${file%.*}".ass -codec:s text "${file%.*}".srt
+mkvmerge -o "${file%.*}".out -M -S "$file" --default-track 0 --language 0:eng "${file%.*}".srt 
+mv "$file" "${file%.*}".bak
+mv "${file%.*}".out "$file"
 done
